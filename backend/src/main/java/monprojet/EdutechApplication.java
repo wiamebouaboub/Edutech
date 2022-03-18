@@ -1,13 +1,13 @@
-package fr.jfc.ptut;
+package monprojet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PtutApplication {
+public class EdutechApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PtutApplication.class, args);
+		SpringApplication.run(EdutechApplication.class, args);
 	}
 
 }
