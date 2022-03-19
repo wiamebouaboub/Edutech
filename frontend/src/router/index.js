@@ -1,38 +1,72 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
-import Countries from "@/views/Countries.vue";
-import CountryEdit from "@/views/CountryEdit.vue";
-import CityEdit from "@/views/CityEdit.vue";
+import PageMaths from "@/views/PageMaths.vue";
+import PageFrancais from "@/views/PageFrancais.vue";
+import PageDecMond from "@/views/PageDecMond.vue";
+import PageCalcul from "@/views/PageCalcul.vue";
+import PageGeometrie from "@/views/PageGeometrie.vue";
+import PageMesure from "@/views/PageMesure.vue";
+import PageNumerot from "@/views/PageNumerot.vue";
+import PageGram from "@/views/PageGram.vue";
+import PageLecture from "@/views/PageLecture.vue";
+import PageConj from "@/views/PageConj.vue";
+import PageVoc from "@/views/PageVoc.vue";
 
 const routes = [
+
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/PageMaths",
+    name: "PageMaths",
+    component: PageMaths,
   },
   {
-    path: "/countries",
-    name: "Countries",
-    component: Countries,
+    path: "/PageFrancais",
+    name: "PageFrancais",
+    component: PageFrancais,
   },
   {
-    path: "/cityEdit",
-    name: "CityEdit",
-    component: CityEdit,
+    path: "/PageDecMond",
+    name: "PageDecMond",
+    component: PageDecMond,
   },
   {
-    path: "/countryEdit",
-    name: "CountryEdit",
-    component: CountryEdit,
+    path: "/PageCalcul",
+    name: "PageCalcul",
+    component: PageCalcul,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/PageGeometrie",
+    name: "PageGeometrie",
+    component: PageGeometrie,
+  },
+  {
+    path: "/PageMesure",
+    name: "PageMesure",
+    component: PageMesure,
+  },
+  {
+    path: "/PageNumerot",
+    name: "PageNumerot",
+    component: PageNumerot,
+  },
+  {
+    path: "/PageGram",
+    name: "PageGram",
+    component: PageGram,
+  },
+  {
+    path: "/PageLecture",
+    name: "PageLecture",
+    component: PageLecture,
+  },
+  {
+    path: "/PageConj",
+    name: "PageConj",
+    component: PageConj,
+  },
+  {
+    path: "/PageVoc",
+    name: "PageVoc",
+    component: PageVoc,
   },
 ];
 
