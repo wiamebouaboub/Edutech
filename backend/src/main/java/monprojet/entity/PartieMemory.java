@@ -15,7 +15,6 @@ public class PartieMemory {
 
     private int valeur;
 
-    @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     PartiesGagnees partiesGagnees;
 

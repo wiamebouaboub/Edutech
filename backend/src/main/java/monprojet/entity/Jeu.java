@@ -15,6 +15,6 @@ public class Jeu {
     @NonNull
     private String intitule;
 
-    @OneToOne (mappedBy = "jjeu")
+    @OneToOne(mappedBy = "jeu")
     private Cours cours;
 }
