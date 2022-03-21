@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import PageAccueil from "@/views/PageAccueil.vue";
 import PageMaths from "@/views/PageMaths.vue";
 import PageFrancais from "@/views/PageFrancais.vue";
 import PageDecMond from "@/views/PageDecMond.vue";
@@ -12,7 +13,11 @@ import PageConj from "@/views/PageConj.vue";
 import PageVoc from "@/views/PageVoc.vue";
 
 const routes = [
-
+  {
+    path: "/PageAccueil",
+    name: "PageAccueil",
+    component: PageAccueil,
+  },
   {
     path: "/PageMaths",
     name: "PageMaths",
