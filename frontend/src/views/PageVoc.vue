@@ -6,14 +6,17 @@
     <body>
         <header>
             <div class="contenu">
-                <h1 class="titre1">Vocabulaire</h1>                                
+                <h2 class="titre1">Vocabulaire</h2>                                
             </div>    
         </header>
         <section>
             <article>
                 <div class="cours">
-                    <h2>Cours</h2>
-                </div>               
+                    <h3>Cours</h3>
+                </div>    
+                <div>
+                    <QuillEditor theme="snow" />
+                </div>            
             </article>
         </section>
     </body>

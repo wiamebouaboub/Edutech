@@ -1,25 +1,26 @@
 <template>
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Edutech</title>
-        <link rel="stylesheet" href="style2.css"/>
-        <title>EDUTECH</title>
-    </head>
-    <body>
-        <header>
-            <div class="contenu">
-                <h1 class="titre1">Mesure</h1>                                
-            </div>    
-        </header>
-        <section>
-            <article>
-                <div class="cours">
-                    <h2>Cours</h2>
-                </div>               
-            </article>
-        </section>
-    </body>    
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edutech</title>
+    <link rel="stylesheet" href="style2.css" />
+    <title>EDUTECH</title>
+  </head>
+  <body>
+    <header>
+      <div class="contenu">
+        <h2 class="titre1">Mesure</h2>
+      </div>
+    </header>
+    <section>
+      <article>
+        <div class="cours">
+          <h3>Cours</h3>
+        </div>
+        <div>
+          <QuillEditor theme="snow" />
+        </div>
+      </article>
+    </section>
+  </body>
 </template>
     

@@ -17,7 +17,10 @@
         <section>
             <article>
                 <div class="cours">
-                    <h2>Cours</h2>
+                    <h3>Cours</h3>
+                </div>
+                <div>
+                    <QuillEditor theme="snow" />
                 </div>               
             </article>
         </section>
