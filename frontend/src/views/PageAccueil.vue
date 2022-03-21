@@ -1,3 +1,5 @@
+
+
 <template>
     <body>
         <section>
@@ -7,7 +9,8 @@
                         <router-link to="/PageFrancais" class="box1">Français</router-link>
                         <router-link to="/PageDecMond" class="box1">Découverte du monde</router-link>
                 </div> 
-                <router-view/>              
+                <router-view/>         
+
             </article>
         </section>
     </body>

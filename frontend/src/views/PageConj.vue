@@ -13,7 +13,11 @@
             <article>
                 <div class="cours">
                     <h3>Cours</h3>
-                </div>               
+                </div>    
+                <div>
+                    <QuillEditor theme="snow" />
+                </div> 
+                       
             </article>
         </section>
     </body>
