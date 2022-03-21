@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class Chapitre {
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     Matiere matiere;
 
-    @OneToMany(mappedBy = "chapitre")
+    @OneToMany
     @ToString.Exclude
     private List<Cours> cours = new ArrayList<>();
 }

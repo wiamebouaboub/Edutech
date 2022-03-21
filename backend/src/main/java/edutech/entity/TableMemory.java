@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import lombok.*;
 
 @Data
 @Entity
-public class Matiere {
+public class TableMemory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -16,7 +16,11 @@ public class Matiere {
     @NonNull
     private String intitule;
 
-    @OneToMany(mappedBy = "matiere")
+    @NonNull
+    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
+    PartieMemory partieMemory;
+
+    @OneToMany
     @ToString.Exclude
-    private List<Chapitre> chapitres = new ArrayList<>();
+    private List<PaireMemory> paireMemory = new ArrayList<>();
 }

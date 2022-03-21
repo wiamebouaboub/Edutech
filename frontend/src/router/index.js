@@ -10,6 +10,7 @@ import PageGram from "@/views/PageGram.vue";
 import PageLecture from "@/views/PageLecture.vue";
 import PageConj from "@/views/PageConj.vue";
 import PageVoc from "@/views/PageVoc.vue";
+import MemoryPartie from "@/views/MemoryPartie.vue";
 
 const routes = [
 
@@ -32,6 +33,11 @@ const routes = [
     path: "/PageCalcul",
     name: "PageCalcul",
     component: PageCalcul,
+  },
+  {
+    path: "/MemoryPartie",
+    name: "MemoryPartie",
+    component: MemoryPartie,
   },
   {
     path: "/PageGeometrie",

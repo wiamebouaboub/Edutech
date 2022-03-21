@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import javax.persistence.*;
 import lombok.*;
@@ -17,6 +17,6 @@ public class Cours {
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     Chapitre chapitre;
 
-    @OneToOne (mappedBy = "cours")
+    @OneToOne
     private Jeu jeu;
 }

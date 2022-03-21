@@ -1,13 +1,14 @@
-package monprojet.entity;
+package edutech.entity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 import lombok.*;
 
-@NoArgsConstructor
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Jeu {
+public class Matiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,6 +16,7 @@ public class Jeu {
     @NonNull
     private String intitule;
 
-    @OneToOne(mappedBy = "jeu")
-    private Cours cours;
+    @OneToMany
+    @ToString.Exclude
+    private List<Chapitre> chapitres = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import lombok.*;
 @Entity
 public class Memory extends Jeu {
 
-    @OneToMany(mappedBy = "memory")
+    @OneToMany
     private List<PartieMemory> partieMemory = new ArrayList<>();
-}
-;
+};

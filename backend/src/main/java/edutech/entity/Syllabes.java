@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,6 @@ import lombok.*;
 @Entity
 public class Syllabes extends Jeu {
 
-    @OneToMany(mappedBy = "syllabes")
+    @OneToMany
     private List<PartieSyllabes> partieSyllabes = new ArrayList<>();
 }

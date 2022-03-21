@@ -1,4 +1,4 @@
-package monprojet.entity;
+package edutech.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,23 +7,21 @@ import javax.persistence.*;
 import lombok.*;
 
 @Data
-@Entity
-public class PartieSyllabes {
+@Entity // Une entité JPA
+public class PartieMemory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private int valeur;
 
-    @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    PartiesGagnees partieGagnees;
+    PartiesGagnees partiesGagnees;
 
     @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    Syllabes syllabes;
+    Memory memory;
 
-    @OneToMany(mappedBy = "partieSyllabes")
-    @ToString.Exclude
-    private List<PaireSyllabes> paireSyllabes = new ArrayList<>();
+    @OneToMany
+    private List<TableMemory> tableMemory = new ArrayList<>();
 }

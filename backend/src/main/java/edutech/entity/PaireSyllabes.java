@@ -1,19 +1,18 @@
-package monprojet.entity;
+package edutech.entity;
 
 import javax.persistence.*;
 import lombok.*;
 
 @Data
 @Entity
-public class PaireMemory {
+public class PaireSyllabes {
     @Id
-    private String question;
+    private String syllabe;
 
     @NonNull
-    private String reponse;
+    private String audio;
 
     @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    TableMemory tableMemory;
-
+    PartieSyllabes partieSyllabes;
 }

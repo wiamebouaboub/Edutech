@@ -9,7 +9,9 @@
     <body>
         <header>
             <div class="contenu">
-                <h1 class="titre1">Calcul</h1>                                
+                <h1 class="titre1">Calcul</h1> 
+                <router-link to="/MemoryPartie">Jeu du memory des multiplication</router-link>                               
+                <router-view/>
             </div>    
         </header>
         <section>
