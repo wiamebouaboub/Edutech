@@ -13,6 +13,7 @@ import PageConj from "@/views/PageConj.vue";
 import PageVoc from "@/views/PageVoc.vue";
 import MemoryPartie from "@/views/MemoryPartie.vue";
 
+
 const routes = [
   {
     path: "/PageAccueil",

@@ -71,10 +71,7 @@ function Melanger(listeC){
             listeStock.splice(listeStock.indexOf(index),1)
             listeMelange.push(listeC[index])
         }
-       
-    
-    
-    
+  
 }
 }
 
@@ -84,14 +81,16 @@ Melanger(listeC)
 </script>
 
 <template>
+    <div>
+    <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
+    </div> 
+    <div class="conteneur">
+    <MemoryCarte v-for="(texte, index) in listeMelange" 
+            :key="index"
+            :texte="texte"/>
+    </div>
 
-<div class="conteneur">
-<MemoryCarte v-for="(texte, index) in listeMelange" 
-        :key="index"
-        :texte="texte"/>
-
-
-</div>
+    <router-view/>  
 </template>
 
 <style>
@@ -99,5 +98,6 @@ Melanger(listeC)
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 100px;
 }
 </style>

@@ -10,8 +10,6 @@
         <header>
             <div class="contenu">
                 <h1 class="titre1">Calcul</h1> 
-                <router-link to="/MemoryPartie">Jeu du memory des multiplication</router-link>                               
-                <router-view/>
             </div>    
         </header>
         <section>
@@ -19,11 +17,36 @@
                 <div class="cours">
                     <h3>Cours</h3>
                 </div>
-                <div>
+                <div class="editCours">
                     <QuillEditor theme="snow" />
                 </div>               
+            </article>
+            <article>
+                <div class="jeu">
+                    <router-link to="/MemoryPartie" class="jeuMultip"><h3>Jeu du memory des multiplication</h3></router-link>
+                    <img id="jeuMem" src="../assets/icon-jeuMemory.png">                                           
+                </div>
+                <router-view/>
+
             </article>
         </section>
     </body>
 </template>
-    
+
+<style>
+.jeuMultip{
+    color: black;
+
+}
+
+.jeu{
+    width: 200;
+    height: 200;
+}
+
+
+.editCours{
+    margin: 0 0 50px 5px;
+}
+
+</style>

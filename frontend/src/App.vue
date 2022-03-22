@@ -51,6 +51,7 @@ img {
 
 h3{
     text-decoration-line: underline;
+    margin: 0 0 0 10px;
 }
 
 /*Style page d'acceuil */
