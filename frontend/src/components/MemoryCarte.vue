@@ -19,9 +19,12 @@ defineProps(["texte", "index"]);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: auto;
+  margin: auto;
+  font-size: 25px;
 }
 
-.carte{
+#carte{
 	max-width: 100%;
 	height: auto;
 }
@@ -30,6 +33,8 @@ defineProps(["texte", "index"]);
 .box2{
   position: relative;
   text-align: center;
+  width: 300px;
+  height: 300px;
 }
 
 </style>

@@ -32,14 +32,44 @@ function ajouterPaire(paire){
 
 function verifierPaireDejaChoisie(paire){
 	let res = true
-    listeC.forEach((q)=>{if(paire.question==q){res = false}})
+    listeC.forEach((q)=>{
+        if(paire.question==q){
+            res = false
+        }
+    })
 	return res
 }
+
+let retournerCarteVerso = function(paire) {	
+	//création du verso
+	let verso = document.createElement("img")
+	verso.setAttribute("src", "./assets/verso.png")
+	verso.id = paire+"verso"
+	//retournement de la carte
+	let carte = document.getElementById(paire)
+	//on verifie que la carte existe
+	if(carte != null){
+		carte.style.display = "none"
+		carte.parentElement.insertBefore(verso, carte)
+	}
+}
+
+let retournerCarteRecto = function(paire){
+	//on supprime le verso
+	let verso = document.getElementById(paire+"verso")
+	if(verso != null){
+		verso.remove()
+		document.getElementById(paire).style.display = "inline"
+	}
+	//on change le display
+}
+
 
 function paireHasard(tableDe1){
 	let index = Math.floor(Math.random()*tableDe1.length)
 	return tableDe1[index]
 }
+
 function AfficherPaire(tableDe1){
     
     let paire = null
@@ -97,7 +127,8 @@ Melanger(listeC)
 .conteneur{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin-top: 100px;
+    justify-content: center;
+    margin: 20px 10px 20px 10px;
+    flex-wrap: wrap;
 }
 </style>

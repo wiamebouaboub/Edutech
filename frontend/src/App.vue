@@ -20,20 +20,20 @@
 
 <style>
 
-main{
+body{
     background-color: rgb(113, 240, 162);
 }
 
 h1{
     font-family: 'Arial Black', Georgia, 'Times New Roman', Times, serif;
     font-size: 50px;
-    text-align:center;
-    position:relative;
-    margin: 10px 0 10px 0;
+    text-align: center;
+    position: relative;
+    margin: 10px 0px 10px 0;
     padding: 10px 10px 10px 10px;
 }
 
-img {
+#accueil {
 	width: 150px;
 	height: 150px;
 }
