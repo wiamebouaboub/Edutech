@@ -38,10 +38,16 @@
     color: black;
 
 }
+#jeuMem{
+    width: 200;
+    height: 200;
+}
 
 .jeu{
     width: 200;
     height: 200;
+    display: flex;
+    justify-content: left;
 }
 
 

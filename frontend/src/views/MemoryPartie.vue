@@ -40,30 +40,6 @@ function verifierPaireDejaChoisie(paire){
 	return res
 }
 
-let retournerCarteVerso = function(paire) {	
-	//création du verso
-	let verso = document.createElement("img")
-	verso.setAttribute("src", "./assets/verso.png")
-	verso.id = paire+"verso"
-	//retournement de la carte
-	let carte = document.getElementById(paire)
-	//on verifie que la carte existe
-	if(carte != null){
-		carte.style.display = "none"
-		carte.parentElement.insertBefore(verso, carte)
-	}
-}
-
-let retournerCarteRecto = function(paire){
-	//on supprime le verso
-	let verso = document.getElementById(paire+"verso")
-	if(verso != null){
-		verso.remove()
-		document.getElementById(paire).style.display = "inline"
-	}
-	//on change le display
-}
-
 
 function paireHasard(tableDe1){
 	let index = Math.floor(Math.random()*tableDe1.length)
@@ -111,14 +87,16 @@ Melanger(listeC)
 </script>
 
 <template>
-    <div>
-    <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
-    </div> 
+    <div class=acces>
+        <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
+        <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
+        </div> 
     <div class="conteneur">
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
             :texte="texte"/>
     </div>
+    
 
     <router-view/>  
 </template>
@@ -131,4 +109,20 @@ Melanger(listeC)
     margin: 20px 10px 20px 10px;
     flex-wrap: wrap;
 }
+
+.acces{
+    display: flex;
+    justify-content: center;
+}
+
+#refresh{
+  background-image: url("../assets/rejouer.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
 </style>
