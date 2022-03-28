@@ -8,20 +8,24 @@ import lombok.*;
 
 @Data
 @Entity // Une entité JPA
+@Table(name = "Partiememory")
 public class PartieMemory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "partiememory_id")
     private Integer id;
 
+    @Column(name = "partiememory_valeur")
     private int valeur;
 
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    PartiesGagnees partiesGagnees;
+    PartiesGagnees partiesgagneesm;
 
     @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     Memory memory;
 
-    @OneToMany
-    private List<TableMemory> tableMemory = new ArrayList<>();
+    @OneToMany(mappedBy = "partiememory")
+    @ToString.Exclude
+    private List<TableMemory> tablememory = new ArrayList<>();
 }

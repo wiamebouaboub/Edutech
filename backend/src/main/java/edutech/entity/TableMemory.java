@@ -8,19 +8,22 @@ import lombok.*;
 
 @Data
 @Entity
+@Table(name = "Tablememory")
 public class TableMemory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tablememory_id")
     private Integer id;
 
     @NonNull
+    @Column(name = "syllabes_intitule")
     private String intitule;
 
     @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    PartieMemory partieMemory;
+    PartieMemory partiememory;
 
-    @OneToMany
+    @OneToMany(mappedBy = "tablememory")
     @ToString.Exclude
-    private List<PaireMemory> paireMemory = new ArrayList<>();
+    private List<PaireMemory> pairememory = new ArrayList<>();
 }

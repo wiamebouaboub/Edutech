@@ -11,8 +11,14 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
+@Table(name = "Memory")
 public class Memory extends Jeu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "memory_id")
+    private Integer id;
 
-    @OneToMany
-    private List<PartieMemory> partieMemory = new ArrayList<>();
+    @OneToMany(mappedBy = "memory")
+    @ToString.Exclude
+    private List<PartieMemory> partiememory = new ArrayList<>();
 };

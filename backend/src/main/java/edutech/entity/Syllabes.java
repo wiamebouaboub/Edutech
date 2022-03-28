@@ -11,8 +11,14 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
+@Table(name = "Syllabes")
 public class Syllabes extends Jeu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "syllabes_id")
+    private Integer id;
 
-    @OneToMany
-    private List<PartieSyllabes> partieSyllabes = new ArrayList<>();
+    @OneToMany(mappedBy = "syllabes")
+    @ToString.Exclude
+    private List<PartieSyllabes> partiesyllabes = new ArrayList<>();
 }
