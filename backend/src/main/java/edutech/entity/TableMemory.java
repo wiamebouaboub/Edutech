@@ -16,11 +16,11 @@ public class TableMemory {
     private Integer id;
 
     @NonNull
-    @Column(name = "syllabes_intitule")
+    @Column(name = "tablememory_intitule")
     private String intitule;
 
     @NonNull
-    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
+    @ManyToOne
     PartieMemory partiememory;
 
     @OneToMany(mappedBy = "tablememory")
