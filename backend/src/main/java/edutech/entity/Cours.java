@@ -5,12 +5,15 @@ import lombok.*;
 
 @Data
 @Entity
+@Table(name = "Cours")
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cours_id")
     private Integer id;
 
     @NonNull
+    @Column(name = "cours_intitule")
     private String intitule;
 
     @NonNull

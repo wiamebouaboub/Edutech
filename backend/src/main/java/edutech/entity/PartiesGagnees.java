@@ -7,14 +7,17 @@ import lombok.*;
 
 @Data
 @Entity
+@Table(name = "Partiesgagnees")
 public class PartiesGagnees {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "partiesgagnees_id")
     private Integer id;
 
-    @OneToMany
-    private List<PartieSyllabes> partieSyllabes = new ArrayList<>();
+    @OneToMany(mappedBy = "partiesgagneess")
+    private List<PartieSyllabes> partiesyllabes = new ArrayList<>();
 
-    @OneToMany
-    private List<PartieMemory> partieMemory = new ArrayList<>();
+    @OneToMany(mappedBy = "partiesgagneesm")
+    private List<PartieMemory> partiememory = new ArrayList<>();
 }

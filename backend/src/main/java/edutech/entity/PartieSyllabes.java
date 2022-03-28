@@ -8,22 +8,23 @@ import lombok.*;
 
 @Data
 @Entity
+@Table(name = "Partiesyllabes")
 public class PartieSyllabes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "partiesyllabes_id")
     private Integer id;
 
+    @Column(name = "partiesyllabes_valeur")
     private int valeur;
 
-    @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    PartiesGagnees partieGagnees;
+    PartiesGagnees partiesgagneess;
 
-    @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     Syllabes syllabes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "partiesyllabes")
     @ToString.Exclude
-    private List<PaireSyllabes> paireSyllabes = new ArrayList<>();
+    private List<PaireSyllabes> pairesyllabes = new ArrayList<>();
 }
