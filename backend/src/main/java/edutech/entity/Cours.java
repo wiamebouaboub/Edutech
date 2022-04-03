@@ -7,6 +7,11 @@ import lombok.*;
 @Entity
 @Table(name = "Cours")
 public class Cours {
+
+    public Cours(){
+        
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cours_id")

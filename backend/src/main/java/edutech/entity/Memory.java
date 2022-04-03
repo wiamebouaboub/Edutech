@@ -13,6 +13,8 @@ import lombok.*;
 @Entity
 @Table(name = "Memory")
 public class Memory extends Jeu {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "memory_id")

@@ -10,6 +10,11 @@ import lombok.*;
 @Entity
 @Table(name = "Chapitre")
 public class Chapitre {
+
+    public Chapitre(){
+        
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "chapitre_id")

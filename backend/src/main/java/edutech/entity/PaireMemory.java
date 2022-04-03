@@ -7,6 +7,11 @@ import lombok.*;
 @Entity
 @Table(name = "Pairememory")
 public class PaireMemory {
+
+    public PaireMemory(){
+        
+    }
+
     @Id
     @Column(name = "question")
     private String question;

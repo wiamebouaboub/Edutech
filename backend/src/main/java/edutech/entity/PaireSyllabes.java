@@ -7,6 +7,11 @@ import lombok.*;
 @Entity
 @Table(name = "Pairesyllabes")
 public class PaireSyllabes {
+
+    public PaireSyllabes(){
+        
+    }
+
     @Id
     @Column(name = "syllabe")
     private String syllabe;

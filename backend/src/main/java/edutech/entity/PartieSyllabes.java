@@ -10,6 +10,11 @@ import lombok.*;
 @Entity
 @Table(name = "Partiesyllabes")
 public class PartieSyllabes {
+
+    public PartieSyllabes(){
+        
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "partiesyllabes_id")

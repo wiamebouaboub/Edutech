@@ -28,6 +28,7 @@ import edutech.dao.UserRepository;
 import edutech.security.jwt.JwtUtils;
 import edutech.security.services.UserDetailsImpl;
 
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")

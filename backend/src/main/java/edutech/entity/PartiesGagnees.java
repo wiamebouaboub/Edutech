@@ -10,6 +10,10 @@ import lombok.*;
 @Table(name = "Partiesgagnees")
 public class PartiesGagnees {
 
+    public PartiesGagnees(){
+        
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "partiesgagnees_id")

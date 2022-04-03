@@ -10,6 +10,9 @@ import lombok.*;
 @Entity
 @Table(name = "Tablememory")
 public class TableMemory {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tablememory_id")
@@ -26,4 +29,6 @@ public class TableMemory {
     @OneToMany(mappedBy = "tablememory")
     @ToString.Exclude
     private List<PaireMemory> pairememory = new ArrayList<>();
+
+
 }

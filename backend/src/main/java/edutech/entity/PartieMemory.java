@@ -10,6 +10,11 @@ import lombok.*;
 @Entity // Une entité JPA
 @Table(name = "Partiememory")
 public class PartieMemory {
+
+    public PartieMemory(){
+        
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "partiememory_id")

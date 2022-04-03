@@ -13,6 +13,8 @@ import lombok.*;
 @Entity
 @Table(name = "Syllabes")
 public class Syllabes extends Jeu {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "syllabes_id")
