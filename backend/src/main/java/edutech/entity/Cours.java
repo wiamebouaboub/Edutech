@@ -1,5 +1,8 @@
 package edutech.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import lombok.*;
 
@@ -25,6 +28,11 @@ public class Cours {
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     Chapitre chapitre;
 
-    @OneToOne
-    private Jeu jeu;
+    @OneToMany(mappedBy = "coursmemory")
+    @ToString.Exclude
+    private List<Memory> memory = new ArrayList<>();
+
+    @OneToMany(mappedBy = "courssyllabes")
+    @ToString.Exclude
+    private List<Syllabes> syllabes = new ArrayList<>();
 }

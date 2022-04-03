@@ -23,7 +23,7 @@ public class PartieSyllabes {
     @Column(name = "partiesyllabes_valeur")
     private int valeur;
 
-    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
+    @ManyToOne
     PartiesGagnees partiesgagneess;
 
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle

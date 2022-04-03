@@ -23,7 +23,7 @@ public class PartieMemory {
     @Column(name = "partiememory_valeur")
     private int valeur;
 
-    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
+    @ManyToOne
     PartiesGagnees partiesgagneesm;
 
     @NonNull
