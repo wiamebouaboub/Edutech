@@ -8,11 +8,15 @@ import lombok.*;
 @Table(name = "Pairememory")
 public class PaireMemory {
 
-    public PaireMemory(){
-        
+    public PaireMemory() {
+
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pairememory_id")
+    private Integer id;
+
     @Column(name = "question")
     private String question;
 

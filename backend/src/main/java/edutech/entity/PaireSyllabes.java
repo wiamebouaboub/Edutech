@@ -8,11 +8,16 @@ import lombok.*;
 @Table(name = "Pairesyllabes")
 public class PaireSyllabes {
 
-    public PaireSyllabes(){
-        
+    public PaireSyllabes() {
+
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pairesyllabes_id")
+    private Integer id;
+
+    @NonNull
     @Column(name = "syllabe")
     private String syllabe;
 
@@ -20,7 +25,6 @@ public class PaireSyllabes {
     @Column(name = "audio")
     private String audio;
 
-    @NonNull
     @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
     PartieSyllabes partiesyllabes;
 }
