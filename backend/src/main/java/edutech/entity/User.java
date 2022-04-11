@@ -1,12 +1,14 @@
 package edutech.entity;
 
 import lombok.NonNull;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@ToString
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
@@ -35,7 +37,8 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
     private Set<Role> roles;
 
-  
+    public User() {
+    }
 
     public User(String first_name, String last_name, String email, String password) {
         this.first_name = first_name;
@@ -99,6 +102,4 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    
 }

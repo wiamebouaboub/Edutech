@@ -1,4 +1,4 @@
-package edutech.payload.response;
+package edutech.playload.response;
 
 import java.util.List;
 

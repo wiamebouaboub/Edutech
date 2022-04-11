@@ -1,4 +1,4 @@
-package edutech.payload.request;
+package edutech.playload.request;
 
 import javax.validation.constraints.NotBlank;
 
