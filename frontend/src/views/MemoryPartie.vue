@@ -17,10 +17,8 @@ function recupererPaire() {
       return response.json();
     })
     .then((dataJSON) => {
-        console.log("dataJSON", dataJSON._embedded.paireMemories)
        listePaire.splice(0, listePaire.length)
         dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.reponse-1, v.question, v.reponse)));
-        console.log("listePaire", listePaire);
 
     })
     .then(()=>{
@@ -45,7 +43,6 @@ function ajouterPaire(paire){
 		listeC.push(paire._question)
         listeC.push(paire._reponse)
 		ajout_ok = true
-        console.log("liste C",listeC)
     }
 	return ajout_ok
 }
@@ -62,7 +59,6 @@ function verifierPaireDejaChoisie(paire){
 
 function paireHasard(listePaire){
 	let index = Math.floor(Math.random()*listePaire.length)
-    console.log("paireHasard", listePaire[index]);
 	return listePaire[index]
 }
 
