@@ -1,10 +1,9 @@
 <script setup>
-import { reactive, onMounted, ref, onBeforeUpdate} from 'vue' ;
+import { reactive, onMounted, onBeforeUpdate} from 'vue' ;
 import MemoryCarte from '../components/MemoryCarte.vue';
 import Paire from '../MemoryPaire';
 
-const carteRefs = ref([])
-let cartesSelect = [];
+const carteRefs = reactive([])
 const listeC = reactive([]);
 const listeMelange = reactive([]);
 const listePaire = reactive([]) ;
@@ -99,20 +98,20 @@ function melanger(listeC){
 }
 
 function retournerCarte(index){
-    cartesSelect.push(listeMelange[index]);
-    console.log(carteRefs.value);
-    carteRefs.value[index].retournerCarte();
-    if(cartesSelect.length >= 2){
+    console.log(index)
+    carteRefs.push(listeMelange[index]);
+    console.log(carteRefs);
+    if(carteRefs.length >= 2){
         //traitement pour vérifier la réponse
-
+        
         // on retourne les cartes ou les enlève
     }
 }
 
 onBeforeUpdate(() => {
-      carteRefs.value = [];
+      carteRefs.splice(0,carteRefs.length);
     });
-onMounted(() => console.log(carteRefs.value))
+onMounted(() => console.log(carteRefs))
 
 </script>
 
@@ -128,8 +127,7 @@ onMounted(() => console.log(carteRefs.value))
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
             :texte="texte"
-            @retourne="retournerCarte(index)"
-            ref="carteRefs"/>
+            @retourne="retournerCarte(index)"/>
     </div>
     
 

@@ -5,9 +5,10 @@ defineProps(["texte"]);
 const emit = defineEmits(['retourne']);
 
 let estRetourne=ref(false);
-function retourner(){
-  retournerCarte();
-  emit("retourne");
+
+function retourner(index){
+  retournerCarte()
+  emit('retourne', index);
 }
 
 function retournerCarte(){
@@ -17,8 +18,8 @@ function retournerCarte(){
 </script>
 
 <template>
-  <div class="box2">
-    <div @click="retourner()" >
+  <div class="box2" @click="retourner()">
+    <div >
       <img id="carteRetour" v-if="estRetourne" src="../assets/recto-carte.png"/>
       <img id="carte" v-else src="../assets/fondcarte.png"/>
     </div>
