@@ -9,27 +9,28 @@ const listePaire = reactive([]) ;
 
 function recupererPaire() {
     const fetchOptions = { method: "GET"};
-  fetch("api/paireMemories", fetchOptions)
+  fetch("api/tableMemories/1/pairememory", fetchOptions)
     .then((response) => {
-        
       if (!response.ok) {
         throw new Error(response.status);
       }
       return response.json();
     })
     .then((dataJSON) => {
-
+        console.log("dataJSON", dataJSON._embedded.paireMemories)
        listePaire.splice(0, listePaire.length)
         dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.reponse-1, v.question, v.reponse)));
         console.log("listePaire", listePaire);
+
     })
     .then(()=>{
+
         afficherPaire(listePaire);
     })
     .then(()=>{
         melanger(listeC);
     })
-    .catch((error) => console.log("erreur",error));
+    .catch((error) => console.log("erreur recuperer",error));
 }
 
 onMounted(()=>{
@@ -39,15 +40,12 @@ onMounted(()=>{
 
 function ajouterPaire(paire){
 	let ajout_ok = false
-    console.log(ajout_ok);
     
 	if(verifierPaireDejaChoisie(paire)){
-        console.log("test",paire._question)
 		listeC.push(paire._question)
         listeC.push(paire._reponse)
 		ajout_ok = true
         console.log("liste C",listeC)
-        console.log(ajout_ok);
     }
 	return ajout_ok
 }
@@ -64,7 +62,7 @@ function verifierPaireDejaChoisie(paire){
 
 function paireHasard(listePaire){
 	let index = Math.floor(Math.random()*listePaire.length)
-    console.log(listePaire[index]);
+    console.log("paireHasard", listePaire[index]);
 	return listePaire[index]
 }
 
