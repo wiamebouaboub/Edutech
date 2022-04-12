@@ -1,15 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 
-defineProps(["texte", "index"]);
+defineProps(["texte"]);
+const emit = defineEmits(['retourne']);
 
 let estRetourne=ref(false);
 function retourner(){
-  estRetourne.value=!estRetourne.value;
-  $emit("retourne",index);
-      {{ texte }}
-  
+  retournerCarte();
+  emit("retourne");
 }
+
+function retournerCarte(){
+    estRetourne.value=!estRetourne.value;
+}
+
 </script>
 
 <template>
@@ -47,6 +51,7 @@ function retourner(){
   text-align: center;
   width: 300px;
   height: 300px;
+  cursor: pointer;
 }
 
 </style>

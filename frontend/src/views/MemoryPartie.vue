@@ -1,8 +1,10 @@
 <script setup>
-import { reactive, onMounted} from 'vue' ;
+import { reactive, onMounted, ref, onBeforeUpdate} from 'vue' ;
 import MemoryCarte from '../components/MemoryCarte.vue';
 import Paire from '../MemoryPaire';
 
+const carteRefs = ref([])
+let cartesSelect = [];
 const listeC = reactive([]);
 const listeMelange = reactive([]);
 const listePaire = reactive([]) ;
@@ -96,17 +98,38 @@ function melanger(listeC){
     }
 }
 
+function retournerCarte(index){
+    cartesSelect.push(listeMelange[index]);
+    console.log(carteRefs.value);
+    carteRefs.value[index].retournerCarte();
+    if(cartesSelect.length >= 2){
+        //traitement pour vérifier la réponse
+
+        // on retourne les cartes ou les enlève
+    }
+}
+
+onBeforeUpdate(() => {
+      carteRefs.value = [];
+    });
+onMounted(() => console.log(carteRefs.value))
+
 </script>
 
 <template>
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
+        <div id=rejouer>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
+        Rejouer
+        </div>
         </div> 
     <div class="conteneur">
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
-            :texte="texte"/>
+            :texte="texte"
+            @retourne="retournerCarte(index)"
+            ref="carteRefs"/>
     </div>
     
 
@@ -132,9 +155,15 @@ function melanger(listeC){
   background-size: cover;
   width: 50px;
   height: 50px;
-  border: none;
+  border: 5px;
   cursor: pointer;
   margin-right: 8px;
+}
+
+#rejouer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 </style>
