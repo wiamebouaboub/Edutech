@@ -32,8 +32,6 @@ public class ConsoleApp implements CommandLineRunner {
         for (User u : tousLesUtilisateurs) {
             System.out.println(u);
         }
-        
-        tapezEnterPourContinuer();
 
         log.info("On ajoute un nouvel enregistrement");
         User eleve1 = new User("nico", "aymard","nico@gmail.com",encoder.encode("nicoymd"));
@@ -41,27 +39,10 @@ public class ConsoleApp implements CommandLineRunner {
         userDAO.save(eleve1);
         log.info("Après l'enregistrement, la clé a été générée : {}", eleve1);
 
-        tapezEnterPourContinuer();
-
         log.info("Recherche par clé");
         Optional<User> oc = userDAO.findById(2);
         oc.ifPresent(c -> log.info("On a trouvé: {}", c));
 
-        tapezEnterPourContinuer();
 
-        log.info("Suppression par clé");
-        log.info("Avant la suppression il y a {} enregistrements", userDAO.count());
-        try {
-            userDAO.deleteById(2);
-            log.info("Après la suppression il reste {} enregistrements", userDAO.count());    
-        } catch (DataIntegrityViolationException e) {
-            log.info("Impossible de supprimer cet utilisateur, il reste toujours {} enregistrements", userDAO.count());    
-
-        }
-   }
-
-    public static void tapezEnterPourContinuer() throws Exception {
-        System.out.println("Tapez \"ENTER\" pour continuer...");
-        System.in.read();
     }
 }

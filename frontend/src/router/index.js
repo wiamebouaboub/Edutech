@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import PageInscriptionEleve from "@/views/PageInscriptionEleve.vue";
+import PageConnexion from "@/views/PageConnexion.vue";
 import PageAccueil from "@/views/PageAccueil.vue";
 import PageMaths from "@/views/PageMaths.vue";
 import PageFrancais from "@/views/PageFrancais.vue";
@@ -15,6 +17,14 @@ import MemoryPartie from "@/views/MemoryPartie.vue";
 
 
 const routes = [
+  {path:"/PageInscriptionEleve",
+   name:"Page InscriptionEleve",
+   component: PageInscriptionEleve,
+  },
+  {path:"/PageConnexion",
+   name:"PageConnexion",
+   component: PageConnexion,
+  },
   {
     path: "/PageAccueil",
     name: "PageAccueil",

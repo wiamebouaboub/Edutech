@@ -4,6 +4,8 @@
     <body>
         <section>
             <article>
+                        <router-link to="/PageInscriptionEleve" class="box1">Inscrire nouvel élève</router-link>
+
                 <div class="blocs">
                         <router-link to="/PageMaths" class="box1">Mathématiques</router-link>
                         
