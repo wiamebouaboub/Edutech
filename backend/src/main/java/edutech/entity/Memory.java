@@ -14,6 +14,7 @@ import lombok.*;
 @Table(name = "Memory")
 
 public class Memory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "memory_id")

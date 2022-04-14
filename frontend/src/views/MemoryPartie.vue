@@ -1,30 +1,47 @@
 <script setup>
 import { reactive, onMounted} from 'vue' ;
 import MemoryCarte from '../components/MemoryCarte.vue';
-
-
-const cartes1x1 = {question:"1x1", reponse:"1" }
-const cartes1x2 = {question:"1x2", reponse:"2" }
-const cartes1x3 = {question:"1x3", reponse:"3" }
-const cartes1x4 = {question:"1x4", reponse:"4" }
-const cartes1x5 = {question:"1x5", reponse:"5" }
-const cartes1x6 = {question:"1x6", reponse:"6" }
-const cartes1x7 = {question:"1x7", reponse:"7" }
-const cartes1x8 = {question:"1x8", reponse:"8" }
-const cartes1x9 = {question:"1x9", reponse:"9" }
-const cartes1x10 = {question:"1x10", reponse:"10" }
-
-const tableDe1 = [cartes1x1, cartes1x2, cartes1x3, cartes1x4, cartes1x5, cartes1x6, cartes1x7, cartes1x8, cartes1x9, cartes1x10]
+import Paire from '../MemoryPaire';
 
 const listeC = reactive([]);
 const listeMelange = reactive([]);
+const listePaire = reactive([]) ;
 
+function recupererPaire() {
+    const fetchOptions = { method: "GET"};
+  fetch("api/tableMemories/1/pairememory", fetchOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .then((dataJSON) => {
+       listePaire.splice(0, listePaire.length)
+        dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.reponse-1, v.question, v.reponse)));
+
+    })
+    .then(()=>{
+
+        afficherPaire(listePaire);
+    })
+    .then(()=>{
+        melanger(listeC);
+    })
+    .catch((error) => console.log("erreur recuperer",error));
+}
+
+onMounted(()=>{
+    recupererPaire();
+    
+});
 
 function ajouterPaire(paire){
 	let ajout_ok = false
+    
 	if(verifierPaireDejaChoisie(paire)){
-		listeC.push(paire.question)
-        listeC.push(paire.reponse)
+		listeC.push(paire._question)
+        listeC.push(paire._reponse)
 		ajout_ok = true
     }
 	return ajout_ok
@@ -40,28 +57,24 @@ function verifierPaireDejaChoisie(paire){
 	return res
 }
 
-
-function paireHasard(tableDe1){
-	let index = Math.floor(Math.random()*tableDe1.length)
-	return tableDe1[index]
+function paireHasard(listePaire){
+	let index = Math.floor(Math.random()*listePaire.length)
+	return listePaire[index]
 }
 
-function AfficherPaire(tableDe1){
-    
+function afficherPaire(listePaire){ 
     let paire = null
     let booleen = null
     let compteur = 0
-    while(compteur<8){
-    
-    paire = paireHasard(tableDe1)
+
+    while(compteur<8){  
+    paire = paireHasard(listePaire);
     booleen = ajouterPaire(paire)
     if(booleen){compteur++}
     }
-    
 }
 
-function Melanger(listeC){
-    
+function melanger(listeC){  
     let compteur = 0
     let index = null
     let listeStock = []
@@ -70,19 +83,14 @@ function Melanger(listeC){
         listeStock.push(i)
     }
     
-    while(listeStock.length>0){
-        
+    while(listeStock.length>0){  
         index = Math.floor(Math.random()*16)
         if(listeStock.indexOf(index)>-1){
             listeStock.splice(listeStock.indexOf(index),1)
             listeMelange.push(listeC[index])
         }
-  
+    }
 }
-}
-
-AfficherPaire(tableDe1)
-Melanger(listeC)
 
 </script>
 
