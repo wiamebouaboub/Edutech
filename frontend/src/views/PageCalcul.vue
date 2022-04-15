@@ -23,7 +23,7 @@
             </article>
             <article>
                 <div class="jeu">
-                    <router-link to="/MemoryPartie" class="jeuMultip"><h3>Jeu du memory des multiplication</h3></router-link>
+                    <router-link to="/MemoryPartie" class="jeuMultip"><h3>Jeu du memory des multiplications</h3></router-link>
                     <img id="jeuMem" src="../assets/icon-jeuMemory.png">                                           
                 </div>
                 <router-view/>
