@@ -100,6 +100,10 @@ function melanger(listeC) {
     }
   }
 }
+let estRetourne=ref(false);
+function retournerCarte(){
+    estRetourne.value=!estRetourne.value;
+}
 
 var nbPairesTrouvees = 0;
 
@@ -122,7 +126,7 @@ function verifierCarte(index) {
 
           }
         }else {
-        cartesSelectionnees.splice(0);
+            retournerCarte();
       }        
     } 
   }
