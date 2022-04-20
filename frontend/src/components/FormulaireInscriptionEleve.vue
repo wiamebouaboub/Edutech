@@ -28,14 +28,10 @@ function register(){
  }; 
  fetch("http://localhost:8989/api/auth/signup", fetchOptions)
     .then((response)=>{
-      
-      console.log("slt");
-        
-        return response.json();
+      return response.json();
     })
     .then((json)=>{
         data.user={...emptyUser};
-        console.log(data.user);
     })
     .catch((error)=>console.log("register : " + error));
 }
@@ -43,7 +39,7 @@ function register(){
 </script>
 <template>
     <div class="register">
-    <form @submit.prevent="$emit('registerU',email,first_name,last_name,password,role)">
+    <form @submit.prevent="register">
         
         <label id="register">Page d'inscription</label>
         <input id="email" type="email" v-model="data.user.email" placeholder="Email"/>

@@ -4,5 +4,5 @@ import FormulaireInscriptionEleve from "../components/FormulaireInscriptionEleve
 </script>
 
 <template>
-<div class="formulaire"><FormulaireInscriptionEleve @registerU="register"></FormulaireInscriptionEleve></div>
+<div class="formulaire"><FormulaireInscriptionEleve @register="register"></FormulaireInscriptionEleve></div>
 </template>

@@ -26,18 +26,14 @@ function login(){
  }; 
  fetch("http://localhost:8989/api/auth/signin", fetchOptions)
     .then((response)=>{
-        if (!response.ok) { 
-        throw new Error(response.status);
-      }
         return response.json();
     })
     .then((dataJSON)=>{
-        listeToken.splice(0,listeToken.length);
-        listeToken.push(dataJSON.accessToken);
-       if (!listeToken.isEmpty){
-           document.location.href="/PageAccueil";
-       }
+      localStorage.setItem('jwt','Bearer '+dataJSON.accessToken);
     })
+    .then(()=>{
+    document.location.href="/PageAccueil";}
+    )
 }
 </script>
 
@@ -45,8 +41,7 @@ function login(){
 
 <template>
     <div class="login">
-    <form @submit.prevent="login">
-        
+    <form @submit.prevent="login">    
         <label id="login">Page de connexion</label>
         <input id="email" type="email" v-model="data.user.email" placeholder="Email"/>
         <input id="password" type="password" v-model="data.user.password" placeholder="Mot de passe"/>

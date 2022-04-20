@@ -14,7 +14,6 @@
                 <div class="cours">
                     <h3>Cours</h3>
                 </div> 
-                <!--<div sec:authorize="hasRole('maitre')">-->
                 <div>
                     <QuillEditor theme="snow" />
                 </div>                              
