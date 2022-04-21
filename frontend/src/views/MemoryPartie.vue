@@ -133,8 +133,15 @@ function choisirTable(){
 
 function jouer(){
     afficherPaire(listePaire);
+<<<<<<< HEAD
     melanger(listeC); 
     console.log("listeMelange", listeMelange);
+=======
+    melanger(listeC);  
+    console.log(listeMelange);
+
+
+>>>>>>> 657198fb4a5adf32129e77f5a4687d5a1e500c52
 }
 
 function verifierCarte(index) {
@@ -185,23 +192,37 @@ function supprimerCarte(carte) {
 }
 }
 
+function handlerRetourner(index){
+  let carte = listeMelange[index];
+  console.log("avant", carte._visible)
+  
+  carte._visible=!carte._visible;
+  console.log("apres", carte._visible)
+  return carte._visible;
+}
+
 </script>
 
 <template>
-
+    
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
     </div> 
+
+    <div class="choix-table">
+    <div>
     <MemoryChoixTable @choixTable="choisirTable"/>
+    </div>   
     <Memory-Jouer @go="jouer"/>
+    </div>
 
     <div class="conteneur">
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
             :texte="texte"
             :index="index"
-            @retourne="verifierCarte"/>
+            @retourne="handlerRetourner"/>
     </div>
     
     <router-view/>  
@@ -231,4 +252,7 @@ function supprimerCarte(carte) {
   margin-right: 8px;
 }
 
+.choix-table{
+    margin: 50px 150px 0 0;
+}
 </style>

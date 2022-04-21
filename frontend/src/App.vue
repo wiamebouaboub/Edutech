@@ -10,7 +10,7 @@
                     <div id="titre">
                         <h1 class="titre">EDUTECH</h1>                             
                     </div>   
-                    <router-link to="/PageConnexion" class="box1">Se connecter</router-link>               
+                    <!--<router-link to="/PageConnexion" class="box1">Se connecter</router-link>-->               
                 </div>                 
                 <router-view/>
             </header>
@@ -89,10 +89,10 @@ h2::after{
 
 .box1{
     color : rgb(0, 0, 0);
-    border: 1.2px rgb(148, 236, 47) solid ;
+    border: 1.2px #54d4a4 solid ;
     border-radius: 20px;
     font-family: 'Arial Black', Georgia, 'Times New Roman', Times, serif;
-    background-color: rgb(148, 236, 47);
+    background-color: #1dbf80;
     font-size: 20px;
     height: 100px;
     width: 250px;

@@ -20,6 +20,7 @@ public class Role {
     @NonNull
     private String name;
 
+
     public Integer getRole_id() {
         return role_id;
     }

@@ -7,15 +7,13 @@ export default class Carte {
     get id() {
         return this._id;
         }
-    get question() {
+    get carte() {
     return this._carte;
     }
-    get reponse() {
+    get visible() {
     return this._visible;
     }
-    get visible() {
-        return this._visible;
-    }
+
     retourner() {
         this._visible = !this._visible;
         }
