@@ -6,7 +6,7 @@
         <body>
             <header>
                 <div class="contenu">                    
-                    <router-link to="/PageAccueil" ><img src="./assets/Logo-EDUTECH.png" id="accueil"></router-link>  
+                    <img src="./assets/Logo-EDUTECH.png" id="accueil">
                     <div id="titre">
                         <h1 class="titre">EDUTECH</h1>                             
                     </div>   
@@ -115,4 +115,9 @@ a:link{
 
     height: 200px;
 }
+
+.login{
+    margin: 50px 100px 0 0;
+}
+
 </style>

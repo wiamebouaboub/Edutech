@@ -132,6 +132,9 @@ function jouer(){
     console.log(listeMelange)
 }
 
+
+
+
 function verifierCarte(index) {
     handlerRetourner(index)
   cartesSelectionnees.push(listeMelange[index]);
@@ -143,9 +146,8 @@ function verifierCarte(index) {
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
             nbPairesTrouvees = nbPairesTrouvees +1;
-            console.log("gg nbPairesTrouvees", nbPairesTrouvees)
-            supprimerCarte(carte1)
-            supprimerCarte(carte2)
+            cartes1.style.visibility="hidden";
+            cartes2.style.visibility="hidden";          
             for(let i=0; i<listeMelange.length;i++){
                 console.log(listeMelange[i]._id);
                 if(listeMelange[i]._id==carte1){
@@ -162,12 +164,14 @@ function verifierCarte(index) {
           console.log("cartesSelectionnees", cartesSelectionnees)
           console.log("listeMelange apres Verifier Carte", listeMelange)
     }
+    if(nbPairesTrouvees == 10){
+        rejouer();
+    }
 }
               
-function gagner(nbPairesTrouvees){
-    if(nbPairesTrouvees == 10){
-
-    }
+function rejouer(){
+	alert("Bravo !");
+	location.reload();
 }
     
 function supprimerCarte(carte) {
