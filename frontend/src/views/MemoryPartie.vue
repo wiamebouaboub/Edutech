@@ -121,7 +121,6 @@ function choisirTable(){
     if(table10.checked){
         listeTable.push(table10.value);
     }
-
     recupererPaire();
 }
 
@@ -133,10 +132,18 @@ function jouer(){
 }
 
 function verifierCarte(index) {
+    if(cartesSelectionnees.length==0){
     handlerRetourner(index)
   cartesSelectionnees.push(listeMelange[index])
   console.log("carteSelectionnees index", listeMelange[index])
   console.log("carteSelectionnees",cartesSelectionnees);
+    }
+    if(cartesSelectionnees.length==1 && !(cartesSelectionnees[0]._carte==listeMelange[index]._carte)){
+        handlerRetourner(index)
+  cartesSelectionnees.push(listeMelange[index])
+  console.log("carteSelectionnees index", listeMelange[index])
+  console.log("carteSelectionnees",cartesSelectionnees);
+    }
   if (cartesSelectionnees.length == 2) {
       setTimeout(() => trouver(cartesSelectionnees), 2000);
     }
@@ -168,20 +175,17 @@ function gagner(nbPairesTrouvees){
 }
     
 function supprimerCarte(carte) {
-    
-console.log("carte", carte)
     for(let i=0; i<listeMelange.length;i++){
-                console.log(listeMelange[i]._id);
-                if(listeMelange[i]._id==carte){
-                    listeMelange.splice(i,1)
-                }
-            }
+        if(listeMelange[i]._id==carte){
+            listeMelange.splice(i,1)
+        }
+    }
 }
 
 function handlerRetourner(index){
-  let carte = listeMelange[index];  
-  carte._visible=!carte._visible;
-  return carte._visible;
+let carte = listeMelange[index];
+carte._visible=!carte._visible;
+return carte._visible;
 }
 
 </script>
