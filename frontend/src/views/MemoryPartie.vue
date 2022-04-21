@@ -133,7 +133,6 @@ function jouer(){
 
 
 
-
 function verifierCarte(index) {
     if(cartesSelectionnees.length==0){
         handlerRetourner(index)
