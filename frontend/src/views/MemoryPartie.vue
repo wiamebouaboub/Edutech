@@ -76,7 +76,7 @@ function melanger(listeC){
     let compteur = 0
     let index = null
     let listeStock = []
-    for(let i=0;i<16;i++){
+    for(let i=0;i<4;i++){
         listeStock.push(i)
     }
     
@@ -134,6 +134,8 @@ function jouer(){
 
 
 function verifierCarte(index) {
+    if(listeMelange[index]._pasgagnee==true){
+        console.log("cartecliqué", listeMelange[index])
     if(cartesSelectionnees.length==0){
         handlerRetourner(index)
         cartesSelectionnees.push(listeMelange[index]);
@@ -144,7 +146,7 @@ function verifierCarte(index) {
     }
     if (cartesSelectionnees.length == 2) {
         setTimeout(() => trouver(cartesSelectionnees), 2000);
-    }
+    }}
 }
 
 function trouver(cartesSelectionnees){
@@ -152,10 +154,8 @@ function trouver(cartesSelectionnees){
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
             nbPairesTrouvees = nbPairesTrouvees +1;
-            supprimerCarte(carte1)
-            supprimerCarte(carte2)
-//            cartes1.style.visibility="hidden";
-//            cartes2.style.visibility="hidden";     
+            cartesSelectionnees[0]._pasgagnee=false;
+            cartesSelectionnees[1]._pasgagnee=false;  
         }else{
             console.log("perdu")
             cartesSelectionnees[0]._visible=false;
