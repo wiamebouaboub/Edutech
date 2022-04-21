@@ -162,7 +162,7 @@ function trouver(cartesSelectionnees){
             cartesSelectionnees[1]._visible=false;
             
         }
-    cartesSelectionnees.splice(0,cartesSelectionnees.length)
+    cartesSelectionnees.splice(0, cartesSelectionnees.length)
     if(nbPairesTrouvees == 10){
         rejouer();
     }
@@ -181,7 +181,6 @@ function supprimerCarte(carte) {
             listeMelange.splice(i,1)
         }
     }
-
 }
 
 function handlerRetourner(index){
