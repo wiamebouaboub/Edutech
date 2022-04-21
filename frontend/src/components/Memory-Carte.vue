@@ -1,30 +1,20 @@
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, defineEmits, defineProps } from "vue";
+import Carte from '../MemoryCarte';
 
 const props = defineProps(["texte", "index"]);
-const emit = defineEmits(['retourne']);
-
-let estRetourne=ref(false);
-
-function retourner(){
-  retournerCarte()
-  emit('retourne', props.index);
-}
-
-function retournerCarte(){
-    estRetourne.value=!estRetourne.value;
-}
+const emit = defineEmits(['retourne'])
 
 </script>
 
 <template>
-  <div class="box2" @click="retourner">
-    <div >
-      <img id="carteRetour" v-if="estRetourne" src="../assets/recto-carte.png"/>
+  <div class="box2" @click="$emit('retourne', props.index)">
+    <div>      
+      <img id="carteRetour" v-if="texte.visible" src="../assets/recto-carte.png"/>  
       <img id="carte" v-else src="../assets/fondcarte.png"/>
     </div>
-    <div class="table" v-if="estRetourne"> 
-      {{ texte }}
+    <div class="table" v-if="texte.visible">
+    {{ texte.carte }}
     </div>
   </div>
 </template>
@@ -44,6 +34,7 @@ function retournerCarte(){
 #carte,#carteRetour{
 	max-width: 100%;
 	height: auto;
+  position: fixed;
 }
 
 

@@ -3,6 +3,7 @@
 
 <template>
     <form @submit.prevent="$emit('choixTable')">
+        <div>
         <label>Table de 1</label>
         <input id="table1" type="checkbox" v-model="table" value="1"/>
         <label>Table de 2</label>
@@ -24,10 +25,12 @@
         <label>Table de 10</label>
         <input id="table10" type="checkbox" v-model="table" value="10"/>
         <input id="valider" type="submit" value="Valider"/>
+        </div>
     </form>
 </template>
 
 
 
 <style scoped>
+
 </style>
