@@ -7,8 +7,6 @@ import MemoryChoixTable from '../components/Memory-Choixtable.vue';
 import { ref } from "vue";
 import Carte from '../MemoryCarte';
 
-let bool = ref(false);
-
 const listeC = reactive([]);
 const listeMelange = reactive([]);
 const listePaire = reactive([]) ;
@@ -131,18 +129,15 @@ function jouer(){
     afficherPaire(listePaire);
     melanger(listeC);  
     console.log(listeMelange);
-
-
 }
 
 function verifierCarte(index) {
-
   cartesSelectionnees.push(listeMelange[index]);
   console.log("carteSelectionnees",cartesSelectionnees);
 
-  if (cartesSelectionnees.length == 3) {
-    let carte1 = cartesSelectionnees[1];
-    let carte2 = cartesSelectionnees[2];
+  if (cartesSelectionnees.length == 2) {
+    let carte1 = cartesSelectionnees[0];
+    let carte2 = cartesSelectionnees[1];
     for (let questionReponse of listePaire) {
         if(carte1==questionReponse._question){
           if(carte2==questionReponse._reponse){
@@ -158,8 +153,10 @@ function verifierCarte(index) {
             nbPairesTrouvees=nbPairesTrouvees+1;
             console.log("gg nbPairesTrouvees", nbPairesTrouvees)
             console.log("cartesSelectionnees", cartesSelectionnees)
+            
             supprimerCarte(carte1)
             supprimerCarte(carte2)
+            
           }
         }
       }
@@ -167,9 +164,11 @@ function verifierCarte(index) {
       cartesSelectionnees.splice(1, cartesSelectionnees.length)        
     }
     console.log("listeMelange apres Verifier Carte", listeMelange)
+    
   }
   
 function supprimerCarte(carte) {
+
   for (let i = 0; i < listeMelange.length ; i++){
     if(listeMelange[i]==carte){
       listeMelange.splice(i, 1);
@@ -179,11 +178,11 @@ function supprimerCarte(carte) {
 
 function handlerRetourner(index){
   let carte = listeMelange[index];
-  console.log("avant", carte._visible)
   
   carte._visible=!carte._visible;
-  console.log("apres", carte._visible)
   return carte._visible;
+
+  
 }
 
 </script>
