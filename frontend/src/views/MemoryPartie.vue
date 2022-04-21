@@ -146,8 +146,8 @@ function verifierCarte(index) {
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
             nbPairesTrouvees = nbPairesTrouvees +1;
-            cartes1.style.visibility="hidden";
-            cartes2.style.visibility="hidden";          
+//            cartes1.style.visibility="hidden";
+//            cartes2.style.visibility="hidden";     
             for(let i=0; i<listeMelange.length;i++){
                 console.log(listeMelange[i]._id);
                 if(listeMelange[i]._id==carte1){
@@ -192,7 +192,6 @@ function handlerRetourner(index){
 </script>
 
 <template>
-    
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
