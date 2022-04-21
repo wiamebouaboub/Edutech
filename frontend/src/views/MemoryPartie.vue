@@ -142,18 +142,19 @@ function verifierCarte(index) {
   console.log("carteSelectionnees",cartesSelectionnees);
 
   if (cartesSelectionnees.length == 2) {
+      setTimeout(() => trouver(cartesSelectionnees), 2000)
+    }  
+}
+
+function trouver(cartesSelectionnees){
     let carte1 = cartesSelectionnees[0]._id;
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
             nbPairesTrouvees = nbPairesTrouvees +1;
+            supprimerCarte(carte1)
+            supprimerCarte(carte2)
 //            cartes1.style.visibility="hidden";
 //            cartes2.style.visibility="hidden";     
-            for(let i=0; i<listeMelange.length;i++){
-                console.log(listeMelange[i]._id);
-                if(listeMelange[i]._id==carte1){
-                    listeMelange.splice(i,1);
-                }
-            }
         }else{
             console.log("perdu")
             cartesSelectionnees[0]._visible=false;
@@ -168,6 +169,8 @@ function verifierCarte(index) {
         rejouer();
     }
 }
+    
+
               
 function rejouer(){
 	alert("Bravo !");
