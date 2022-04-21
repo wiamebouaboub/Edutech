@@ -1,20 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 
-defineProps(["texte", "index"]);
+const props = defineProps(["texte", "index"]);
+const emit = defineEmits(['retourne']);
 
 let estRetourne=ref(false);
+
 function retourner(){
-  estRetourne.value=!estRetourne.value;
-  $emit("retourne",index);
-      {{ texte }}
-  
+  retournerCarte()
+  emit('retourne', props.index);
 }
+
+function retournerCarte(){
+    estRetourne.value=!estRetourne.value;
+}
+
 </script>
 
 <template>
-  <div class="box2">
-    <div @click="retourner()" >
+  <div class="box2" @click="retourner">
+    <div >
       <img id="carteRetour" v-if="estRetourne" src="../assets/recto-carte.png"/>
       <img id="carte" v-else src="../assets/fondcarte.png"/>
     </div>
@@ -47,6 +52,7 @@ function retourner(){
   text-align: center;
   width: 300px;
   height: 300px;
+  cursor: pointer;
 }
 
 </style>

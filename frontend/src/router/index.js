@@ -12,7 +12,7 @@ import PageLecture from "@/views/PageLecture.vue";
 import PageConj from "@/views/PageConj.vue";
 import PageVoc from "@/views/PageVoc.vue";
 import MemoryPartie from "@/views/MemoryPartie.vue";
-
+import MemoryJeu from "@/views/MemoryJeu.vue";
 
 const routes = [
   {
@@ -44,6 +44,11 @@ const routes = [
     path: "/MemoryPartie",
     name: "MemoryPartie",
     component: MemoryPartie,
+  },
+  {
+    path: "/MemoryJeu",
+    name: "MemoryJeu",
+    component: MemoryJeu,
   },
   {
     path: "/PageGeometrie",

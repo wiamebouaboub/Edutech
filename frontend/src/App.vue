@@ -15,22 +15,7 @@
             </header>
             <div class="container">
 	<br/><br/>
-		<form th:action="@{/login}" method="POST" class="form-signin" style="width:30%;margin:auto">
-			<h3 class="form-signin-heading">LOGIN PAGE</h3>
-			
-			<br/>
-			 <div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Username or password is invalid</p>
-			</div>
-			
-			<input type="text" id="username" name="username"  th:placeholder="Username or email"
-				class="form-control" /> <br/> 
-			<input type="password"  th:placeholder="Password"
-				id="password" name="password" class="form-control" /> <br />
-				
-			
-			<button class="btn btn-lg btn-block" name="Submit" value="Login" type="Submit" th:text="Login" style="background-color:rgb(148, 236, 47);font-weight: bold">Se connecter</button>
-		</form>
+    
 	</div>
         </body>
     </main>
