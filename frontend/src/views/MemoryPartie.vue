@@ -131,12 +131,16 @@ function jouer(){
     console.log(listeMelange)
 }
 
+
+
+
 function verifierCarte(index) {
     if(cartesSelectionnees.length==0){
     handlerRetourner(index)
-  cartesSelectionnees.push(listeMelange[index])
+  cartesSelectionnees.push(listeMelange[index]);
   console.log("carteSelectionnees index", listeMelange[index])
   console.log("carteSelectionnees",cartesSelectionnees);
+<<<<<<< HEAD
     }
     if(cartesSelectionnees.length==1 && !(cartesSelectionnees[0]._carte==listeMelange[index]._carte)){
         handlerRetourner(index)
@@ -149,37 +153,57 @@ function verifierCarte(index) {
     }
 
 }
+=======
+>>>>>>> d0124879f9e34e28bcbd08c26f40db8f0a80b7c4
 
-function trouver(cartesSelectionnees){
+  if (cartesSelectionnees.length == 2) {
     let carte1 = cartesSelectionnees[0]._id;
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
             nbPairesTrouvees = nbPairesTrouvees +1;
-            console.log("gg nbPairesTrouvees", nbPairesTrouvees)
-            supprimerCarte(carte1)
-            supprimerCarte(carte2)
+//            cartes1.style.visibility="hidden";
+//            cartes2.style.visibility="hidden";     
+            for(let i=0; i<listeMelange.length;i++){
+                console.log(listeMelange[i]._id);
+                if(listeMelange[i]._id==carte1){
+                    listeMelange.splice(i,1);
+                }
+            }
         }else{
             console.log("perdu")
             cartesSelectionnees[0]._visible=false;
-            cartesSelectionnees[1]._visible=false;   
+            cartesSelectionnees[1]._visible=false;
+            
         }
           cartesSelectionnees.splice(0, cartesSelectionnees.length)
           console.log("cartesSelectionnees", cartesSelectionnees)
           console.log("listeMelange apres Verifier Carte", listeMelange)
+    }
+    if(nbPairesTrouvees == 10){
+        rejouer();
+    }
 }
               
-function gagner(nbPairesTrouvees){
-    if(nbPairesTrouvees == 10){
-
-    }
+function rejouer(){
+	alert("Bravo !");
+	location.reload();
 }
     
 function supprimerCarte(carte) {
+<<<<<<< HEAD
     for(let i=0; i<listeMelange.length;i++){
         if(listeMelange[i]._id==carte){
             listeMelange.splice(i,1)
         }
     }
+=======
+
+  for (let i = 0; i < listeMelange.length ; i++){
+    if(listeMelange[i]==carte){
+      listeMelange.splice(i, 1);
+    }
+}
+>>>>>>> d0124879f9e34e28bcbd08c26f40db8f0a80b7c4
 }
 
 function handlerRetourner(index){
@@ -191,7 +215,6 @@ return carte._visible;
 </script>
 
 <template>
-    
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
