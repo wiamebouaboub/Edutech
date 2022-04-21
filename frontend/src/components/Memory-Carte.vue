@@ -34,9 +34,8 @@ const emit = defineEmits(['retourne'])
 #carte,#carteRetour{
 	max-width: 100%;
 	height: auto;
-  position: fixed;
-}
 
+}
 
 .box2{
   position: relative;

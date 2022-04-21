@@ -133,7 +133,7 @@ function jouer(){
 }
 
 function verifierCarte(index) {
-
+    handlerRetourner(index)
   cartesSelectionnees.push(listeMelange[index]);
   console.log("carteSelectionnees index", listeMelange[index])
   console.log("carteSelectionnees",cartesSelectionnees);
@@ -155,7 +155,7 @@ function verifierCarte(index) {
         }else{
             console.log("perdu")
             cartesSelectionnees[0]._visible=false;
-            cartesSelectionnees[0]._visible=false;
+            cartesSelectionnees[1]._visible=false;
             
         }
           cartesSelectionnees.splice(0, cartesSelectionnees.length)
@@ -171,6 +171,7 @@ function gagner(nbPairesTrouvees){
 }
     
 function supprimerCarte(carte) {
+
   for (let i = 0; i < listeMelange.length ; i++){
     if(listeMelange[i]==carte){
       listeMelange.splice(i, 1);
@@ -205,7 +206,7 @@ function handlerRetourner(index){
             :key="index"
             :texte="texte"
             :index="index"
-            @retourne="handlerRetourner"/>
+            @retourne="verifierCarte"/>
     </div>
     
     <router-view/>  
