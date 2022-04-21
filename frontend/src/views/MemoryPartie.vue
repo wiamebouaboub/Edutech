@@ -134,11 +134,16 @@ function jouer(){
 
 function verifierCarte(index) {
     handlerRetourner(index)
-  cartesSelectionnees.push(listeMelange[index]);
+  cartesSelectionnees.push(listeMelange[index])
   console.log("carteSelectionnees index", listeMelange[index])
   console.log("carteSelectionnees",cartesSelectionnees);
-
   if (cartesSelectionnees.length == 2) {
+      setTimeout(() => trouver(cartesSelectionnees), 2000);
+    }
+
+}
+
+function trouver(cartesSelectionnees){
     let carte1 = cartesSelectionnees[0]._id;
     let carte2 = cartesSelectionnees[1]._id;
         if(carte1==carte2){
@@ -146,22 +151,14 @@ function verifierCarte(index) {
             console.log("gg nbPairesTrouvees", nbPairesTrouvees)
             supprimerCarte(carte1)
             supprimerCarte(carte2)
-            for(let i=0; i<listeMelange.length;i++){
-                console.log(listeMelange[i]._id);
-                if(listeMelange[i]._id==carte1){
-                    listeMelange.splice(i,1);
-                }
-            }
         }else{
             console.log("perdu")
             cartesSelectionnees[0]._visible=false;
-            cartesSelectionnees[1]._visible=false;
-            
+            cartesSelectionnees[1]._visible=false;   
         }
           cartesSelectionnees.splice(0, cartesSelectionnees.length)
           console.log("cartesSelectionnees", cartesSelectionnees)
           console.log("listeMelange apres Verifier Carte", listeMelange)
-    }
 }
               
 function gagner(nbPairesTrouvees){
@@ -171,12 +168,14 @@ function gagner(nbPairesTrouvees){
 }
     
 function supprimerCarte(carte) {
-
-  for (let i = 0; i < listeMelange.length ; i++){
-    if(listeMelange[i]==carte){
-      listeMelange.splice(i, 1);
-    }
-}
+    
+console.log("carte", carte)
+    for(let i=0; i<listeMelange.length;i++){
+                console.log(listeMelange[i]._id);
+                if(listeMelange[i]._id==carte){
+                    listeMelange.splice(i,1)
+                }
+            }
 }
 
 function handlerRetourner(index){
