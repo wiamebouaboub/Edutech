@@ -40,19 +40,22 @@ function ajouterPaire(paire){
         let reponse = new Carte(paire.question + "=" + paire.reponse, paire._reponse);
 		listeC.push(question)
         listeC.push(reponse)
-        console.log(listeC);
 		ajout_ok = true
     }
 	return ajout_ok
 }
 
 function verifierPaireDejaChoisie(paire){
-	let res = true
-    listeC.forEach((q)=>{
-        if(paire.question==q){
-            res = false
+	let res = true;
+    let compteur = 0;
+    listeC.forEach((c)=>{
+        if(c._id == paire._id){
+            compteur = compteur +1;
         }
     })
+    if(compteur>1){
+        res = false;
+    }
 	return res
 }
 
@@ -130,44 +133,49 @@ function choisirTable(){
 
 function jouer(){
     afficherPaire(listePaire);
-    melanger(listeC);  
-
-
+    melanger(listeC); 
+    console.log("listeMelange", listeMelange);
 }
 
 function verifierCarte(index) {
 
   cartesSelectionnees.push(listeMelange[index]);
+  console.log("carteSelectionnees index", listeMelange[index])
   console.log("carteSelectionnees",cartesSelectionnees);
 
-  if (cartesSelectionnees.length == 3) {
-    let carte1 = cartesSelectionnees[1];
-    let carte2 = cartesSelectionnees[2];
-    for (let questionReponse of listePaire) {
-        if(carte1==questionReponse._question){
-          if(carte2==questionReponse._reponse){
-            nbPairesTrouvees=nbPairesTrouvees+1;
+  if (cartesSelectionnees.length == 2) {
+    let carte1 = cartesSelectionnees[0]._id;
+    let carte2 = cartesSelectionnees[1]._id;
+        if(carte1==carte2){
+            nbPairesTrouvees = nbPairesTrouvees +1;
             console.log("gg nbPairesTrouvees", nbPairesTrouvees)
-            console.log("cartesSelectionnees", cartesSelectionnees)
             supprimerCarte(carte1)
             supprimerCarte(carte2)
-          }
+            for(let i=0; i<listeMelange.length;i++){
+                console.log(listeMelange[i]._id);
+                if(listeMelange[i]._id==carte1){
+                    listeMelange.splice(i,1);
+                }
+            }
+        }else{
+            console.log("perdu")
+            cartesSelectionnees[0]._visible=true;
+            console.log(cartesSelectionnees[0]._visible)
+            
         }
-        if(carte2==questionReponse._question){
-          if(carte1==questionReponse._reponse){
-            nbPairesTrouvees=nbPairesTrouvees+1;
-            console.log("gg nbPairesTrouvees", nbPairesTrouvees)
-            console.log("cartesSelectionnees", cartesSelectionnees)
-            supprimerCarte(carte1)
-            supprimerCarte(carte2)
-          }
-        }
-      }
-      console.log("perdu")
-      cartesSelectionnees.splice(1, cartesSelectionnees.length)        
+          cartesSelectionnees.splice(0, cartesSelectionnees.length)
+          console.log("cartesSelectionnees", cartesSelectionnees)
+          console.log("listeMelange apres Verifier Carte", listeMelange)
     }
-    console.log("listeMelange apres Verifier Carte", listeMelange)
-  }
+}
+              
+function gagner(nbPairesTrouvees){
+    if(nbPairesTrouvees == 10){
+
+    }
+}
+    
+
   
 function supprimerCarte(carte) {
   for (let i = 0; i < listeMelange.length ; i++){
