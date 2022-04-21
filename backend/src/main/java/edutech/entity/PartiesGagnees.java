@@ -24,4 +24,8 @@ public class PartiesGagnees {
 
     @OneToMany(mappedBy = "partiesgagneesm")
     private List<PartieMemory> partiememory = new ArrayList<>();
+
+    @NonNull
+    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
+    User user;
 }

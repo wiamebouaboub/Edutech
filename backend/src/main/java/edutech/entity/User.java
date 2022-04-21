@@ -3,6 +3,9 @@ package edutech.entity;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -102,4 +105,8 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private List<PartiesGagnees> partiesGagnees = new ArrayList<>();
 }

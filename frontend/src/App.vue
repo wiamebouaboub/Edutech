@@ -9,14 +9,11 @@
                     <router-link to="/PageAccueil" ><img src="./assets/Logo-EDUTECH.png" id="accueil"></router-link>  
                     <div id="titre">
                         <h1 class="titre">EDUTECH</h1>                             
-                    </div>                
+                    </div>   
+                    <router-link to="/PageConnexion" class="box1">Se connecter</router-link>               
                 </div>                 
                 <router-view/>
             </header>
-            <div class="container">
-	<br/><br/>
-    
-	</div>
         </body>
     </main>
 </template>

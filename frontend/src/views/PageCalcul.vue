@@ -17,7 +17,9 @@
                 <div class="cours">
                     <h3>Cours</h3>
                 </div>
-                <div class="editCours">
+
+                <div class="editCours" >
+                    <intercept-url access="hasAuthority('ADMIN')"/>
                     <QuillEditor theme="snow" />
                 </div>               
             </article>
