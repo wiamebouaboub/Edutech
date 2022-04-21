@@ -136,50 +136,17 @@ function jouer(){
 
 function verifierCarte(index) {
     if(cartesSelectionnees.length==0){
-    handlerRetourner(index)
-  cartesSelectionnees.push(listeMelange[index]);
-  console.log("carteSelectionnees index", listeMelange[index])
-  console.log("carteSelectionnees",cartesSelectionnees);
-<<<<<<< HEAD
+        handlerRetourner(index)
+        cartesSelectionnees.push(listeMelange[index]);
     }
     if(cartesSelectionnees.length==1 && !(cartesSelectionnees[0]._carte==listeMelange[index]._carte)){
         handlerRetourner(index)
-  cartesSelectionnees.push(listeMelange[index])
-  console.log("carteSelectionnees index", listeMelange[index])
-  console.log("carteSelectionnees",cartesSelectionnees);
+        cartesSelectionnees.push(listeMelange[index])
     }
-  if (cartesSelectionnees.length == 2) {
-      setTimeout(() => trouver(cartesSelectionnees), 2000);
+    if (cartesSelectionnees.length == 2) {
+        setTimeout(() => trouver(cartesSelectionnees), 2000);
     }
-
-}
-=======
->>>>>>> d0124879f9e34e28bcbd08c26f40db8f0a80b7c4
-
-  if (cartesSelectionnees.length == 2) {
-    let carte1 = cartesSelectionnees[0]._id;
-    let carte2 = cartesSelectionnees[1]._id;
-        if(carte1==carte2){
-            nbPairesTrouvees = nbPairesTrouvees +1;
-//            cartes1.style.visibility="hidden";
-//            cartes2.style.visibility="hidden";     
-            for(let i=0; i<listeMelange.length;i++){
-                console.log(listeMelange[i]._id);
-                if(listeMelange[i]._id==carte1){
-                    listeMelange.splice(i,1);
-                }
-            }
-        }else{
-            console.log("perdu")
-            cartesSelectionnees[0]._visible=false;
-            cartesSelectionnees[1]._visible=false;
-            
-        }
-          cartesSelectionnees.splice(0, cartesSelectionnees.length)
-          console.log("cartesSelectionnees", cartesSelectionnees)
-          console.log("listeMelange apres Verifier Carte", listeMelange)
-    }
-    if(nbPairesTrouvees == 10){
+    if(nbPairesTrouvees == 8){
         rejouer();
     }
 }
@@ -190,20 +157,11 @@ function rejouer(){
 }
     
 function supprimerCarte(carte) {
-<<<<<<< HEAD
     for(let i=0; i<listeMelange.length;i++){
         if(listeMelange[i]._id==carte){
             listeMelange.splice(i,1)
         }
     }
-=======
-
-  for (let i = 0; i < listeMelange.length ; i++){
-    if(listeMelange[i]==carte){
-      listeMelange.splice(i, 1);
-    }
-}
->>>>>>> d0124879f9e34e28bcbd08c26f40db8f0a80b7c4
 }
 
 function handlerRetourner(index){
