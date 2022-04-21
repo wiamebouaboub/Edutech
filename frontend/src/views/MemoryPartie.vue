@@ -1,15 +1,25 @@
 <script setup>
-import { reactive, onMounted} from 'vue' ;
-import MemoryCarte from '../components/MemoryCarte.vue';
+import { reactive} from 'vue' ;
+import MemoryCarte from '../components/Memory-Carte.vue';
 import Paire from '../MemoryPaire';
+import MemoryJouer from '../components/Memory-Jouer.vue';
+import MemoryChoixTable from '../components/Memory-Choixtable.vue';
+import { ref } from "vue";
+import Carte from '../MemoryCarte';
+
+let bool = ref(false);
 
 const listeC = reactive([]);
 const listeMelange = reactive([]);
 const listePaire = reactive([]) ;
+const listeTable = reactive([]);
+const cartesSelectionnees = reactive([]);
+var nbPairesTrouvees = 0;
 
 function recupererPaire() {
+    for(let i=0;i<listeTable.length;i++){
     const fetchOptions = { method: "GET"};
-  fetch("api/tableMemories/1/pairememory", fetchOptions)
+  fetch("api/tableMemories/"+listeTable[i]+"/pairememory", fetchOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -17,31 +27,20 @@ function recupererPaire() {
       return response.json();
     })
     .then((dataJSON) => {
-       listePaire.splice(0, listePaire.length)
-        dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.reponse-1, v.question, v.reponse)));
-
-    })
-    .then(()=>{
-
-        afficherPaire(listePaire);
-    })
-    .then(()=>{
-        melanger(listeC);
-    })
-    .catch((error) => console.log("erreur recuperer",error));
-}
-
-onMounted(()=>{
-    recupererPaire();
-    
-});
+        dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.question + "=" + v.reponse, v.question, v.reponse)));
+        bool = true;
+    }).catch((error) => console.log("erreur recuperer",error));
+    }}
 
 function ajouterPaire(paire){
 	let ajout_ok = false
     
 	if(verifierPaireDejaChoisie(paire)){
-		listeC.push(paire._question)
-        listeC.push(paire._reponse)
+        let question = new Carte(paire.question + "=" + paire.reponse, paire._question);
+        let reponse = new Carte(paire.question + "=" + paire.reponse, paire._reponse);
+		listeC.push(question)
+        listeC.push(reponse)
+        console.log(listeC);
 		ajout_ok = true
     }
 	return ajout_ok
@@ -63,7 +62,7 @@ function paireHasard(listePaire){
 }
 
 function afficherPaire(listePaire){ 
-    let paire = null
+        let paire = null
     let booleen = null
     let compteur = 0
 
@@ -92,20 +91,111 @@ function melanger(listeC){
     }
 }
 
+function choisirTable(){
+    listeTable.splice(0, listeTable.length)
+    if(table1.checked){
+        listeTable.push(table1.value);
+    }
+    if(table2.checked){
+        listeTable.push(table2.value);
+    }
+    if(table3.checked){
+        listeTable.push(table3.value);
+    }
+    if(table4.checked){
+        listeTable.push(table4.value);
+    }
+    if(table5.checked){
+        listeTable.push(table5.value);
+    }
+    if(table6.checked){
+        listeTable.push(table6.value);
+    }
+    if(table7.checked){
+        listeTable.push(table7.value);
+    }
+    if(table8.checked){
+        listeTable.push(table8.value);
+    }
+    if(table9.checked){
+        listeTable.push(table9.value);
+    }
+    if(table10.checked){
+        listeTable.push(table10.value);
+    }
+
+    recupererPaire();
+}
+
+
+function jouer(){
+    afficherPaire(listePaire);
+    melanger(listeC);  
+
+
+}
+
+function verifierCarte(index) {
+
+  cartesSelectionnees.push(listeMelange[index]);
+  console.log("carteSelectionnees",cartesSelectionnees);
+
+  if (cartesSelectionnees.length == 3) {
+    let carte1 = cartesSelectionnees[1];
+    let carte2 = cartesSelectionnees[2];
+    for (let questionReponse of listePaire) {
+        if(carte1==questionReponse._question){
+          if(carte2==questionReponse._reponse){
+            nbPairesTrouvees=nbPairesTrouvees+1;
+            console.log("gg nbPairesTrouvees", nbPairesTrouvees)
+            console.log("cartesSelectionnees", cartesSelectionnees)
+            supprimerCarte(carte1)
+            supprimerCarte(carte2)
+          }
+        }
+        if(carte2==questionReponse._question){
+          if(carte1==questionReponse._reponse){
+            nbPairesTrouvees=nbPairesTrouvees+1;
+            console.log("gg nbPairesTrouvees", nbPairesTrouvees)
+            console.log("cartesSelectionnees", cartesSelectionnees)
+            supprimerCarte(carte1)
+            supprimerCarte(carte2)
+          }
+        }
+      }
+      console.log("perdu")
+      cartesSelectionnees.splice(1, cartesSelectionnees.length)        
+    }
+    console.log("listeMelange apres Verifier Carte", listeMelange)
+  }
+  
+function supprimerCarte(carte) {
+  for (let i = 0; i < listeMelange.length ; i++){
+    if(listeMelange[i]==carte){
+      listeMelange.splice(i, 1);
+    }
+}
+}
+
 </script>
 
 <template>
+
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
-        </div> 
+    </div> 
+    <MemoryChoixTable @choixTable="choisirTable"/>
+    <Memory-Jouer @go="jouer"/>
+
     <div class="conteneur">
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
-            :texte="texte"/>
+            :texte="texte"
+            :index="index"
+            @retourne="verifierCarte"/>
     </div>
     
-
     <router-view/>  
 </template>
 
