@@ -4,10 +4,7 @@ import MemoryCarte from '../components/Memory-Carte.vue';
 import Paire from '../MemoryPaire';
 import MemoryJouer from '../components/Memory-Jouer.vue';
 import MemoryChoixTable from '../components/Memory-Choixtable.vue';
-import { ref } from "vue";
 import Carte from '../MemoryCarte';
-
-let bool = ref(false);
 
 const listeC = reactive([]);
 const listeMelange = reactive([]);
@@ -28,9 +25,9 @@ function recupererPaire() {
     })
     .then((dataJSON) => {
         dataJSON._embedded.paireMemories.forEach((v)=>listePaire.push(new Paire(v.question + "=" + v.reponse, v.question, v.reponse)));
-        bool = true;
     }).catch((error) => console.log("erreur recuperer",error));
-    }}
+    }
+}
 
 function ajouterPaire(paire){
 	let ajout_ok = false
@@ -68,7 +65,6 @@ function afficherPaire(listePaire){
         let paire = null
     let booleen = null
     let compteur = 0
-
     while(compteur<8){  
     paire = paireHasard(listePaire);
     booleen = ajouterPaire(paire)
@@ -80,7 +76,6 @@ function melanger(listeC){
     let compteur = 0
     let index = null
     let listeStock = []
-    
     for(let i=0;i<16;i++){
         listeStock.push(i)
     }
@@ -133,15 +128,8 @@ function choisirTable(){
 
 function jouer(){
     afficherPaire(listePaire);
-<<<<<<< HEAD
     melanger(listeC); 
-    console.log("listeMelange", listeMelange);
-=======
-    melanger(listeC);  
-    console.log(listeMelange);
-
-
->>>>>>> 657198fb4a5adf32129e77f5a4687d5a1e500c52
+    console.log(listeMelange)
 }
 
 function verifierCarte(index) {
@@ -166,8 +154,8 @@ function verifierCarte(index) {
             }
         }else{
             console.log("perdu")
-            cartesSelectionnees[0]._visible=true;
-            console.log(cartesSelectionnees[0]._visible)
+            cartesSelectionnees[0]._visible=false;
+            cartesSelectionnees[0]._visible=false;
             
         }
           cartesSelectionnees.splice(0, cartesSelectionnees.length)
@@ -182,8 +170,6 @@ function gagner(nbPairesTrouvees){
     }
 }
     
-
-  
 function supprimerCarte(carte) {
   for (let i = 0; i < listeMelange.length ; i++){
     if(listeMelange[i]==carte){
@@ -193,11 +179,8 @@ function supprimerCarte(carte) {
 }
 
 function handlerRetourner(index){
-  let carte = listeMelange[index];
-  console.log("avant", carte._visible)
-  
+  let carte = listeMelange[index];  
   carte._visible=!carte._visible;
-  console.log("apres", carte._visible)
   return carte._visible;
 }
 
