@@ -32,13 +32,13 @@ INSERT INTO PaireMemory(question, reponse, tablememory_tablememory_id) VALUES
 ('1x9','9', SELECT TABLEMEMORY_ID FROM TABLEMEMORY WHERE UPPER(tableMemory_intitule) =UPPER('Table de 1')),
 ('1x10','10', SELECT TABLEMEMORY_ID FROM TABLEMEMORY WHERE UPPER(tableMemory_intitule) =UPPER('Table de 1'));
 
-INSERT INTO User (first_name,last_name,email,password) VALUES
-('fabrice@gmail.com','fabrice','ymd','fabriceymd');
+INSERT INTO User (email,first_name,last_name,password) VALUES
+('maitre@edutech.fr','maitre','maitre','maitre');
 
 INSERT INTO Role (name) VALUES
 ('maitre'),
 ('eleve');
 
 INSERT INTO USER_ROLE (id_user,id_role) VALUES
-(SELECT USER_ID FROM USER WHERE UPPER(first_name)= UPPER('fabrice@gmail.com'),SELECT ROLE_ID FROM ROLE WHERE UPPER(name)= UPPER('maitre'));
+(SELECT USER_ID FROM USER WHERE UPPER(first_name)= UPPER('maitre'),SELECT ROLE_ID FROM ROLE WHERE UPPER(name)= UPPER('maitre'));
 

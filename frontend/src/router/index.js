@@ -14,14 +14,16 @@ import PageLecture from "@/views/PageLecture.vue";
 import PageConj from "@/views/PageConj.vue";
 import PageVoc from "@/views/PageVoc.vue";
 import MemoryPartie from "@/views/MemoryPartie.vue";
+import {Role} from '@/_role/role.js';
 
 
 const routes = [
   {path:"/PageInscriptionEleve",
    name:"Page InscriptionEleve",
    component: PageInscriptionEleve,
+   meta:{authorize:[Role.maitre]}
   },
-  {path:"/PageConnexion",
+  {path:"/",
    name:"PageConnexion",
    component: PageConnexion,
   },
@@ -98,3 +100,4 @@ const router = createRouter({
 });
 
 export default router;
+

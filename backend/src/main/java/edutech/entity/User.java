@@ -5,6 +5,8 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+
 
 import javax.persistence.*;
 import java.util.Set;
@@ -38,7 +40,11 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
-    private Set<Role> roles;
+        private Set<Role> roles = new HashSet<>();
+ 
+    public void addRole(Role role) {
+        this.roles.add(role);
+}
 
     public User() {
     }

@@ -27,6 +27,8 @@ import edutech.dao.RoleRepository;
 import edutech.dao.UserRepository;
 import edutech.security.jwt.JwtUtils;
 import edutech.security.services.UserDetailsImpl;
+import edutech.security.services.UserDetailsServiceImpl;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -45,7 +47,8 @@ public class AuthController {
     /*@Autowired
     private AuthenticationManager authenticationManagerBean;*/
 
-    
+    @Autowired
+    private UserDetailsServiceImpl service;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -79,20 +82,7 @@ public class AuthController {
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
 
-        Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
-        if (strRoles == null) {
-            Role userRole = roleRepository.findByName("adherent")
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
-        } else {
-            strRoles.forEach(role -> {
-                Role userRole = roleRepository.findByName(role)
-                        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                roles.add(userRole);
-            });
-        }
-        user.setRoles(roles);
+                service.registerDefaultUser(user);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
