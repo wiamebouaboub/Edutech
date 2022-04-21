@@ -40,7 +40,6 @@ function ajouterPaire(paire){
         let reponse = new Carte(paire.question + "=" + paire.reponse, paire._reponse);
 		listeC.push(question)
         listeC.push(reponse)
-        console.log(listeC);
 		ajout_ok = true
     }
 	return ajout_ok
@@ -131,6 +130,7 @@ function choisirTable(){
 function jouer(){
     afficherPaire(listePaire);
     melanger(listeC);  
+    console.log(listeMelange);
 
 
 }
@@ -185,13 +185,16 @@ function supprimerCarte(carte) {
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
         <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
     </div> 
+    <div>
     <MemoryChoixTable @choixTable="choisirTable"/>
+    </div>
+    
     <Memory-Jouer @go="jouer"/>
 
     <div class="conteneur">
     <MemoryCarte v-for="(texte, index) in listeMelange" 
             :key="index"
-            :texte="texte"
+            :texte="texte._carte"
             :index="index"
             @retourne="verifierCarte"/>
     </div>
