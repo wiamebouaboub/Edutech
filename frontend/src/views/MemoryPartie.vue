@@ -161,7 +161,7 @@ function trouver(cartesSelectionnees){
             
         }
     cartesSelectionnees.splice(0, cartesSelectionnees.length)
-    if(nbPairesTrouvees == 10){
+    if(nbPairesTrouvees == 8){
         rejouer();
     }
 }
