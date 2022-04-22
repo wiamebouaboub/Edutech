@@ -131,8 +131,6 @@ function jouer(){
     console.log(listeMelange)
 }
 
-
-
 function verifierCarte(index) {
     if(listeMelange[index]._pasgagnee==true){
         console.log("cartecliqué", listeMelange[index])
@@ -211,8 +209,8 @@ return carte._visible;
             :index="index"
             @retourne="verifierCarte"/>
     </div>
-    
     <router-view/>  
+
 </template>
 
 <style>
