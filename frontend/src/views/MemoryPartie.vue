@@ -168,7 +168,6 @@ function trouver(cartesSelectionnees){
     }
 }
     
-
               
 function rejouer(){
 	alert("Bravo !");
@@ -210,8 +209,7 @@ return carte._visible;
             :texte="texte"
             :index="index"
             @retourne="verifierCarte"/>
-    </div>
-    
+    </div>  
     <router-view/>  
 </template>
 
