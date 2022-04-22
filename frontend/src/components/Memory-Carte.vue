@@ -9,12 +9,14 @@ const emit = defineEmits(['retourne'])
 
 <template>
   <div class="box2" @click="$emit('retourne', props.index)">
+    <div v-show="texte.pasgagnee">
     <div>      
       <img id="carteRetour" v-if="texte.visible" src="../assets/recto-carte.png"/>  
       <img id="carte" v-else src="../assets/fondcarte.png"/>
     </div>
     <div class="table" v-if="texte.visible">
     {{ texte.carte }}
+    </div>
     </div>
   </div>
 </template>

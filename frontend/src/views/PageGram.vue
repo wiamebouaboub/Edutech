@@ -40,8 +40,10 @@
                               
             </article>
             <h2>Ajout de cours</h2>
+            <div class="italic"><p>Réservé au maître uniquement</p></div>
             <div class="editCours" >
                     <QuillEditor theme="snow" />
+                    
                 </div> 
         </section>
     </body>
@@ -78,5 +80,8 @@ h3{
 p,h3{
  
    text-align:center;  
+}
+.italic{
+    font-style:italic;
 }
 </style>

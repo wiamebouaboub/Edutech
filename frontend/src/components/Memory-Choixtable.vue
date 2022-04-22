@@ -3,6 +3,7 @@
 
 <template>
     <form @submit.prevent="$emit('choixTable')">
+        <div class="italic"><p>Choisi une ou plusieurs table(s):</p></div>
         <div>
         <label>Table de 1</label>
         <input id="table1" type="checkbox" v-model="table" value="1"/>
@@ -32,5 +33,7 @@
 
 
 <style scoped>
-
+.italic{
+  font-style:italic;
+}
 </style>

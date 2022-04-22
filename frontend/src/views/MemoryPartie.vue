@@ -131,8 +131,6 @@ function jouer(){
     console.log(listeMelange)
 }
 
-
-
 function verifierCarte(index) {
     if(listeMelange[index]._pasgagnee==true){
         console.log("cartecliqué", listeMelange[index])
@@ -193,7 +191,6 @@ return carte._visible;
 <template>
     <div class=acces>
         <router-link to="/PageCalcul" class="box1">Retour au cours</router-link>
-        <input type="button" name="Rejouer" id="refresh"  onclick="history.go(0)"/>
     </div> 
 
     <div class="choix-table">
@@ -211,6 +208,7 @@ return carte._visible;
             @retourne="verifierCarte"/>
     </div>  
     <router-view/>  
+
 </template>
 
 <style>
